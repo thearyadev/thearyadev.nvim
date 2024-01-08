@@ -71,6 +71,7 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'tpope/vim-commentary',
   'pocco81/auto-save.nvim',
   {
     'Nvchad/nvterm',
@@ -313,6 +314,22 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+vim.g.clipboard = {
+  name = "xsel",
+  copy ={
+    ["+"] = 'xsel --nodetach -i -b',
+    ["*"] = 'xsel --nodetach -i -p',
+  },
+  paste = {
+    ["+"] = 'xsel -o -b',
+    ["*"] = 'xsel -o -p'
+  },
+  cache_enabled = 1
+
+}
+
+
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -361,6 +378,11 @@ vim.keymap.set('n', '<leader>n', ':ASToggle<CR>', {})
 vim.keymap.set('n', '<leader>v', ':lua require("nvterm.terminal").new "vertical"<CR>')
 vim.keymap.set('n', '<leader>h', ':lua require("nvterm.terminal").new "horizontal"<CR>')
 vim.keymap.set('t', '<C-Esc>', '<C-\\><C-N>', {noremap = true, silent = true})
+
+-- COMMENTARY 
+vim.keymap.set('v', '<C-/>', ":'<,'>Commentary<CR>", {noremap = true, silent = true})
+vim.keymap.set('n', '<C-/>', ":Commentary<CR>", {noremap = true, silent = true})
+
 
 
 
