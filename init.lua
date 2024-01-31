@@ -73,6 +73,11 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'tpope/vim-commentary',
   'pocco81/auto-save.nvim',
+  'edluffy/hologram.nvim',
+  {
+    'windwp/nvim-ts-autotag',
+    init = function () require('nvim-ts-autotag').setup({enable_rename = true, enable_close_on_slash = true, enable_close = true}) end
+  },
   {
     'Nvchad/nvterm',
     config = function ()
@@ -327,6 +332,28 @@ vim.g.clipboard = {
   cache_enabled = 1
 
 }
+require('hologram').setup{
+  auto_display = true
+}
+
+local use_iterm_clipboard = ''-- os.getenv("ITERM_CLIPBOARD")
+
+if use_iterm_clipboard == "1" then
+      vim.g.clipboard = {
+          name = "it2copy",
+          copy ={
+            ["+"] = '/home/arya/.iterm2/it2copy',
+            ["*"] = '/home/arya/.iterm2/it2copy',
+          },
+          paste = {
+            ["+"] = 'it2paste',
+            ["*"] = 'it2paste'
+          },
+          cache_enabled = 1
+   }
+end
+
+
 
 
 
