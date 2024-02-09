@@ -21,7 +21,7 @@ Kickstart.nvim is a template for your own configuration.
   And then you can explore or search through `:help lua-guide`
   - https://neovim.io/doc/user/lua-guide.html
 
-Kickstart Guide:
+Kickstar Guide:
 
 I have left several `:help X` comments throughout the init.lua
 You should run that command and read that help section for more information.
@@ -332,26 +332,13 @@ vim.g.clipboard = {
   cache_enabled = 1
 
 }
+
 require('hologram').setup{
   auto_display = true
 }
 
-local use_iterm_clipboard = ''-- os.getenv("ITERM_CLIPBOARD")
+vim.api.nvim_set_keymap('v', 'y', '"*y', { noremap = true })
 
-if use_iterm_clipboard == "1" then
-      vim.g.clipboard = {
-          name = "it2copy",
-          copy ={
-            ["+"] = '/home/arya/.iterm2/it2copy',
-            ["*"] = '/home/arya/.iterm2/it2copy',
-          },
-          paste = {
-            ["+"] = 'it2paste',
-            ["*"] = 'it2paste'
-          },
-          cache_enabled = 1
-   }
-end
 
 
 
