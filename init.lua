@@ -337,7 +337,7 @@ require('hologram').setup{
   auto_display = true
 }
 
-vim.api.nvim_set_keymap('v', 'y', '"*y', { noremap = true })
+-- vim.api.nvim_set_keymap('v', 'y', '"*y', { noremap = true })
 
 
 
@@ -385,7 +385,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Custom
 -- TREE
-vim.cmd [[autocmd VimEnter * NvimTreeOpen]]
+vim.cmd [[autocmd VimEnter * NvimTreeOpen ]]
+vim.cmd [[autocmd VimEnter * wincmd p]]
 -- AUTO SAVE
 vim.keymap.set('n', '<leader>n', ':ASToggle<CR>', {})
 -- NV TERM
